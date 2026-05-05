@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sincronização e Exclusão Mútua</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Atividade de Sincronização</h1>
+    <p>Algoritmo de Berkeley (Cálculo de Média) + Ordenação de Eventos</p>
+
+    <div class="grid-layout">
+        <!-- Coluna Esquerda: Criação de Entidades -->
+        <div>
+            <div class="box server-box">
+                <h3>Servidor</h3>
+                <button onclick="criarServidor()">Criar Servidor </button>
+                <p>Hora local do servidor: <strong id="lbl-servidor-hora">--:--</strong></p>
+            </div>
+
+            <div class="box">
+                <h3>Criar Clientes</h3>
+                
+                <div class="client-box">
+                    <strong>Cliente 1</strong>
+                    <div class="input-group">
+                        <label>Hora local:</label> <input type="time" id="c1-local">
+                    </div>
+                    <div class="input-group">
+                        <label>Hora de envio:</label> <input type="time" id="c1-envio">
+                    </div>
+                </div>
+
+                <div class="client-box">
+                    <strong>Cliente 2</strong>
+                    <div class="input-group">
+                        <label>Hora local:</label> <input type="time" id="c2-local">
+                    </div>
+                    <div class="input-group">
+                        <label>Hora de envio:</label> <input type="time" id="c2-envio">
+                    </div>
+                </div>
+
+                <div class="client-box">
+                    <strong>Cliente 3</strong>
+                    <div class="input-group">
+                        <label>Hora local:</label> <input type="time" id="c3-local">
+                    </div>
+                    <div class="input-group">
+                        <label>Hora de envio:</label> <input type="time" id="c3-envio">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-sync" onclick="sincronizar()">Sincronizar e Ordenar</button>
+        </div>
+
+        <!-- Coluna Direita: Resultados Esperados (Painel do Servidor) -->
+        <div class="results-area">
+            <h3>Painel do Servidor</h3>
+            <p>Hora local: <span id="res-server-local"></span></p>
+            <p>Hora Local Cliente 1: <span id="res-c1-local"></span></p>
+            <p>Hora Local Cliente 2: <span id="res-c2-local"></span></p>
+            <p>Hora Local Cliente 3: <span id="res-c3-local"></span></p>
+            <br>
+            <p class="highlight">Clock Lógico (Média): <span id="res-media"></span></p>
+            <p>Ajuste do clock (S): <span id="res-adj-s"></span></p>
+            <p>Ajuste do clock (C1): <span id="res-adj-c1"></span></p>
+            <p>Ajuste do clock (C2): <span id="res-adj-c2"></span></p>
+            <p>Ajuste do clock (C3): <span id="res-adj-c3"></span></p>
+            <br>
+            <p class="highlight">Ordem de envio (Alocação do Recurso):</p>
+            <p>1º processo a enviar: <span id="res-ord-1"></span></p>
+            <p>2º processo a enviar: <span id="res-ord-2"></span></p>
+            <p>3º processo a enviar: <span id="res-ord-3"></span></p>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
